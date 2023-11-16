@@ -14,8 +14,8 @@ sources/base-ips-ipv4.txt is a list of known av providers ip ranges(IPv4).
 sources/aws-ips-ipv4.txt is a list of known aws ip ranges fetched daily(IPv4).
 
 ## Usage cases
-> Your phishing domain keeps on getting flagged by AVs but you need them to complete the red team exercise
-> The stager payload is hosted on a webpage and it is CRUCIAL for it to not get detected by the AVs
+- Your phishing domain keeps on getting flagged by AVs but you need them to complete the red team exercise
+- The stager payload is hosted on a webpage and it is CRUCIAL for it to not get detected by the AVs
 
 ## Advisories
 This list should only be used for red team exercises/engagements and should not be used for any nefarious purposes you have in mind.
