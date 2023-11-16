@@ -1,0 +1,6 @@
+I use this file to keep track of ips I need to add to the blacklist
+
+https://gist.github.com/curi0usJack/971385e8334e189d93a6cb4671238b10
+https://docs.google.com/spreadsheets/d/1_rK0SE_dyYKiobqvth0aADsGkZk3DPDfoSbONXf8dxg
+https://ip-ranges.amazonaws.com/ip-ranges.json
+shodan, zoomeye, censys, criminal ip
