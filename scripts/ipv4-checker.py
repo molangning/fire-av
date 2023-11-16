@@ -4,15 +4,16 @@ import re,os
 
 print("[+] IPv4 regex check")
 
-dirs = ['sources/ips','blacklists/','whitelists/']
 files = []
+dirs = ['sources/','blacklists/','whitelists/']
 IPV4_REGEX=r"^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}\/(3[0-2]|[1-2][0-9]|[1-3])$"
 
 for i in dirs:
-    for j in os.listdir(i):
-        if 'ips' not in j:
-            continue
-        files.append(os.path.join(i,j))
+    for root,_,file_list in os.walk(i):
+        for file in file_list:
+            if 'ips' not in file:
+                continue
+            files.append(os.path.join(root,file))
 
 for i in files:
     f=open(i)

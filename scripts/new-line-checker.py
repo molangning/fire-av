@@ -8,8 +8,9 @@ files = []
 dirs = ['sources/','blacklists/','whitelists/']
 
 for i in dirs:
-    for j in os.listdir(i):
-        files.append(os.path.join(i,j))
+    for root,_,file_list in os.walk(i):
+        for file in file_list:
+            files.append(os.path.join(root,file))
 
 for i in files:
     f=open(i)
