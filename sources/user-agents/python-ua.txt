@@ -1,0 +1,2 @@
+Python-urllib/2.7
+python-requests/2.28.2
