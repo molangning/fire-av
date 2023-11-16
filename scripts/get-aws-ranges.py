@@ -37,4 +37,4 @@ ipv4_ranges=[]
 for i in ranges["prefixes"]:
     ipv4_ranges.append(i["ip_prefix"])
 
-f=open("sources/aws-ips-ipv4.txt","w").write('\n'.join(ipv4_ranges))
+f=open("sources/ips/aws-ips-ipv4.txt","w").write('\n'.join(ipv4_ranges))
