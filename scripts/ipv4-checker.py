@@ -4,7 +4,7 @@ import re,os
 
 print("[+] IPv4 regex check")
 
-dirs = ['sources/','blacklists/','whitelists/']
+dirs = ['sources/ips','blacklists/','whitelists/']
 files = []
 IPV4_REGEX=r"^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}\/(3[0-2]|[1-2][0-9]|[1-3])$"
 
