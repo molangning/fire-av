@@ -8,6 +8,8 @@ IPV4_REGEX=r"^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]
 
 for i in dirs:
     for j in os.listdir(i):
+        if 'ips' not in j:
+            continue
         files.append(os.path.join(i,j))
 
 for i in files:
@@ -21,6 +23,7 @@ for i in files:
         if not re.match(IPV4_REGEX,j):
             print("[!] %s did not pass the regex check"%(j))
             exit(2)
+    print("[+] %s passed the check"%(i))
 
-print("IPv4 pre push hook check succeeded")
+print("IPv4 checks succeeded")
 exit(0)
