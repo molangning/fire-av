@@ -29,7 +29,7 @@ for i in files:
             print("[!] Offending file: %s"%(i))
             exit(2)
 
-    print("[+] %s passed IPv6 regex check"%(i))
+    # print("[+] %s passed IPv6 regex check"%(i))
 
 print("[+] All IPv4 checks succeeded")
 exit(0)
