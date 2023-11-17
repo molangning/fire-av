@@ -4,7 +4,7 @@
 
 import requests
 
-print("[+] aws ip range downloader")
+print("[+] AWS ip range downloader")
 ranges={}
 
 for i in range(1,4):
@@ -38,3 +38,10 @@ for i in ranges["prefixes"]:
     ipv4_ranges.append(i["ip_prefix"])
 
 f=open("sources/ips/aws-ips-ipv4.txt","w").write('\n'.join(ipv4_ranges))
+
+ipv6_ranges=[]
+
+for i in ranges["ipv6_prefixes"]:
+    ipv6_ranges.append(i["ipv6_prefix"])
+
+f=open("sources/ips/aws-ips-ipv6.txt","w").write('\n'.join(ipv6_ranges))
