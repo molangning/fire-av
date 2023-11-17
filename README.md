@@ -19,7 +19,7 @@ ips/user-agents that fits the blacklist should be served an normal webpage or an
 | [sources/ips](sources/ips) | Directory containing a list of ips |
 | [sources/user-agents](sources/user-agents) | Directory containing a list of User agents |
 
-The `regexps` directory in `sources/user-agents` contains regexps rules to match common bots. Use at your own risk
+The `regexps` directory in `sources/user-agents` contains regexps rules to match common bots. All regexps are in javascript format so you need to parse them.
 
 ### Blacklists
 |     File path     |      Description      |
