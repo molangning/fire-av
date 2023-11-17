@@ -13,9 +13,13 @@ for i in range(1,4):
         exit(2)
     print("[!] Getting tor exits failed(%i/3)")
 
-contents=r.text
-if contents[-1]=="\n":
-    contents=contents[:-1]
+contents=[]
+
+for i in r.text.split('\n'):
+    if len(i)==0:
+        continue
+
+    contents.append(i+"/32")
 
 f=open("sources/ips/tor-exit-ips-ipv4.txt","w")
-f.write(contents)
+f.write("\n".join(contents))
