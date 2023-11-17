@@ -11,7 +11,7 @@ IPV4_REGEX=r"^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]
 for i in dirs:
     for root,_,file_list in os.walk(i):
         for file in file_list:
-            if 'ips' not in file:
+            if 'ipv4' not in file:
                 continue
             files.append(os.path.join(root,file))
 
@@ -24,7 +24,8 @@ for i in files:
 
     for j in contents.split('\n'):
         if not re.match(IPV4_REGEX,j):
-            print("[!] %s did not pass the regex check"%(j))
+            print("[!] %s did not pass the IPv4 regex check"%(j))
+            print("[!] Offending file: %s"%(i))
             exit(2)
     # print("[+] %s passed IPv4 regex check"%(i))
 
