@@ -6,4 +6,5 @@ set -o pipefail
 
 ./scripts/get-aws-ranges.py
 ./scripts/get-tor-exit-list.py
-./scripts/curi0usjack-htaccess-downloader.py
+# Optional, enable if you need it
+# ./scripts/curi0usjack-htaccess-downloader.py
