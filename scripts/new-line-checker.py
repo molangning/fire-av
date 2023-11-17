@@ -13,10 +13,14 @@ for i in dirs:
             files.append(os.path.join(root,file))
 
 for i in files:
-    f=open(i)
+    f=open(i,"r")
     contents=f.read()
-    if contents[:-1] == '\n':
-        print("[!] %s ends with a new line"%s(i))
+
+    if len(contents) == 0:
+        continue
+    
+    if contents[-1] == '\n':
+        print("[!] %s ends with a new line"%(i))
         exit(2)
     # print("[+] %s passed new line check"%(i))
 
