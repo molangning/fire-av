@@ -13,5 +13,9 @@ for i in range(1,4):
         exit(2)
     print("[!] Getting htaccess failed(%i/3)")
 
+contents=r.text
+if contents[-1]=="\n":
+    contents=contents[:-1]
+
 f=open("sources/raw/curi0us-jack-htaccess","w")
-f.write(r.text)
+f.write(contents)
