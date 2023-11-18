@@ -12,6 +12,7 @@ API_ASN_LIST="https://ftp.ripe.net/ripe/asnames/asn.txt"
 API_ASN_LOOKUP_v4="https://api.shadowserver.org/net/asn?prefix=%s"
 API_ASN_LOOKUP_v6="https://api.shadowserver.org/net/asn?prefix=%s&v6"
 ASN_SEARCH=json.load(open("sources/raw/asn-list.json"))
+
 def request_wrapper(url):
 
     for i in range(1,4):
