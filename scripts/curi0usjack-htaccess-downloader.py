@@ -11,7 +11,7 @@ for i in range(1,4):
     if i==3:
         print("[!] Failed to get htaccess file.")
         exit(2)
-    print("[!] Getting htaccess failed(%i/3)")
+    print("[!] Getting htaccess failed(%i/3)"%(i))
 
 contents=r.text
 if contents[-1]=="\n":

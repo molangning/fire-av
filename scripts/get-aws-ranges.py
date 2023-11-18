@@ -22,7 +22,7 @@ for i in range(1,4):
     if i==3:
         print("[!] Failed to get the list of ip ranges")
         exit(2)
-    print("[!] Getting json failed(%i/3)")
+    print("[!] Getting json failed(%i/3)"%(i))
 
 if not ranges:
     print("[!] Retrieved dictionary empty")

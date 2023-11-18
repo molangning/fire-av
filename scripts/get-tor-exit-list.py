@@ -11,7 +11,7 @@ for i in range(1,4):
     if i==3:
         print("[!] Failed to get list of tor exits.")
         exit(2)
-    print("[!] Getting tor exits failed(%i/3)")
+    print("[!] Getting tor exits failed(%i/3)"%(i))
 
 contents=[]
 
