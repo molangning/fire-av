@@ -7,5 +7,11 @@
     ],
     "domaintools": [
         "DOMAINTOOLS"
+    ],
+    "zscaler": [
+        "ZSCALER"
+    ],
+    "bitdefender":[
+        "Bitdefender"
     ]
 }

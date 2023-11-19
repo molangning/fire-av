@@ -18,7 +18,7 @@ def request_wrapper(url):
     for i in range(1,4):
         r=requests.get(url)
         if r.status_code==200:
-            print("[+] Got %s successfully!"%(url))
+            # print("[+] Got %s successfully!"%(url))
             break
         if i==3:
             print("[!] Failed to get %s."%(url))
@@ -27,8 +27,8 @@ def request_wrapper(url):
 
     return r.text
 
-
 asn_lists_raw=request_wrapper(RAW_ASN_LIST)
+print("[+] Got raw ASNs list"%(url))
 asn_list=[]
 
 for i in asn_lists_raw.split('\n'):
@@ -66,7 +66,7 @@ for i in target_asn:
     result_ipv6=[]
 
     print("[+] Getting %s ASNs"%(name))
-
+    print("[+] %s's ASNs: %s"%(name,",".join(asn_list)))
     for j in asn_list:
         result_ipv4+=json.loads(request_wrapper(API_ASN_LOOKUP_v4%(j)))
         time.sleep(0.5)
@@ -76,6 +76,8 @@ for i in target_asn:
         #
         # result_ipv6+=json.loads(request_wrapper(API_ASN_LOOKUP_v6%(j)))
         # time.sleep(0.5)
+
+    print("[+] Got a list of %i IPv4 and %i IPv6 ranges"%(len(result_ipv4),len(result_ipv6)))
 
     if len(result_ipv4) > 0:
         content="\n".join(result_ipv4)
