@@ -8,7 +8,7 @@ import requests,json,time
 
 print("[+] Name to IP range downloader")
 
-API_ASN_LIST="https://ftp.ripe.net/ripe/asnames/asn.txt"
+RAW_ASN_LIST="https://ftp.ripe.net/ripe/asnames/asn.txt"
 API_ASN_LOOKUP_v4="https://api.shadowserver.org/net/asn?prefix=%s"
 API_ASN_LOOKUP_v6="https://api.shadowserver.org/net/asn?prefix=%s&v6"
 ASN_SEARCH=json.load(open("sources/raw/asn-list.json"))
@@ -28,7 +28,7 @@ def request_wrapper(url):
     return r.text
 
 
-asn_lists_raw=request_wrapper(API_ASN_LIST)
+asn_lists_raw=request_wrapper(RAW_ASN_LIST)
 asn_list=[]
 
 for i in asn_lists_raw.split('\n'):
@@ -65,12 +65,15 @@ for i in target_asn:
     result_ipv4=[]
     result_ipv6=[]
 
+    print("[+] Getting %s ASNs"%(name))
+
     for j in asn_list:
         result_ipv4+=json.loads(request_wrapper(API_ASN_LOOKUP_v4%(j)))
         time.sleep(0.5)
         # Backend throwing weird results for ipv6 queries
         # Should be fixed within next week
         # TODO check if it gets fixed
+        #
         # result_ipv6+=json.loads(request_wrapper(API_ASN_LOOKUP_v6%(j)))
         # time.sleep(0.5)
 
