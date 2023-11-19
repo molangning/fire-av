@@ -60,8 +60,6 @@ for file_name,search_terms in ASN_SEARCH.items():
 
     target_asn.append([file_name,result])
 
-print(target_asn)
-
 for i in target_asn:
     name,asn_list=i
     result_ipv4=[]

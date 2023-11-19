@@ -2,6 +2,8 @@
 
 import requests,json,re
 
+print("[+] Azure ip range downloader")
+
 def request_wrapper(url, headers={}):
 
     for i in range(1,4):
