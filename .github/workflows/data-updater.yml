@@ -14,9 +14,6 @@ jobs:
       
       - name: Update lists
         run: ./update.sh
-
-      - name: Stage our changed lists
-        run: git add sources/
           
       - name: Commit files if changed
         run: ./commit.sh
