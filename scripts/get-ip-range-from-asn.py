@@ -28,7 +28,7 @@ def request_wrapper(url):
     return r.text
 
 asn_lists_raw=request_wrapper(RAW_ASN_LIST)
-print("[+] Got raw ASNs list"%(url))
+print("[+] Got raw ASNs list")
 asn_list=[]
 
 for i in asn_lists_raw.split('\n'):
