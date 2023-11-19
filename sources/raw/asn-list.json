@@ -4,5 +4,8 @@
     ],
     "censys": [
         "CENSYS-ARIN-"
+    ],
+    "domaintools": [
+        "DOMAINTOOLS"
     ]
 }
