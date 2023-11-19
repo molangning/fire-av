@@ -24,8 +24,6 @@ best_ua = ua_dict["data"][0]['ua']
 
 contents=request_wrapper("https://www.microsoft.com/en-us/download/details.aspx?id=56519",headers={"User-Agent":best_ua})
 
-open("temp.txt","w").write(contents)
-
 download_url=re.findall(r"https:\/\/download.microsoft.com\/download\/.*?\.json",contents)[0]
 
 azure_ips=json.loads(request_wrapper(download_url))['values']
