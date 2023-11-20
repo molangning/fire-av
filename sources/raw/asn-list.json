@@ -44,5 +44,8 @@
     "palo-alto": [
         "PAN0",
         "PALO-ALTO-NETWORKS"
+    ],
+    "proofpoint": [
+        "PROOFPOINT"
     ]
 }
