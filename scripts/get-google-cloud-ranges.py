@@ -2,11 +2,11 @@
 
 import requests
 
-print("[+] AWS ip range downloader")
+print("[+] Google cloud ip range downloader")
 ranges={}
 
 for i in range(1,4):
-    r=requests.get("https://ip-ranges.amazonaws.com/ip-ranges.json")
+    r=requests.get("https://www.gstatic.com/ipranges/cloud.json")
     if r.status_code == 200:
         print("[+] Got a list of ip ranges!")
         
@@ -31,15 +31,16 @@ if not ranges["prefixes"]:
     exit(2)
 
 ipv4_ranges=[]
-
-for i in ranges["prefixes"]:
-    ipv4_ranges.append(i["ip_prefix"])
-
-f=open("sources/ips/aws-ips-ipv4.txt","w").write('\n'.join(ipv4_ranges))
-
 ipv6_ranges=[]
 
-for i in ranges["ipv6_prefixes"]:
-    ipv6_ranges.append(i["ipv6_prefix"])
+for i in ranges["prefixes"]:
 
-f=open("sources/ips/aws-ips-ipv6.txt","w").write('\n'.join(ipv6_ranges))
+    dict_keys=i.keys()
+    if "ipv4Prefix" in dict_keys:
+        ipv4_ranges.append(i['ipv4Prefix'])
+
+    if "ipv6Prefix" in dict_keys:
+        ipv6_ranges.append(i['ipv6Prefix'])
+
+f=open("sources/ips/google-cloud-ips-ipv4.txt","w").write('\n'.join(ipv4_ranges))
+f=open("sources/ips/google-cloud-ips-ipv6.txt","w").write('\n'.join(ipv6_ranges))

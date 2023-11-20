@@ -23,5 +23,14 @@
     ],
     "fortinet": [
         "FORTINET"
+    ], 
+    "mcafee": [
+        "mcafee"
+    ], 
+    "netskope": [
+        "NETSKOPE"
+    ],
+    "trendmicro": [
+        "TRENDMICRO"
     ]
 }
