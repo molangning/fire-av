@@ -116,9 +116,10 @@
         "reject": []
     },
     
-    "messagelabs": {
+    "symantec": {
         "match": [
-            "Messagelabs"
+            "Symantec",
+            "MessageLabs"
         ],
         "reject": []
     }
