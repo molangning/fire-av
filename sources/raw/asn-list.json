@@ -35,5 +35,10 @@
     ],
     "digitalocean": [
         "DIGITALOCEAN"
+    ],
+    "akamai": [
+        "AKAMAI",
+        "NOMINUM",
+        "LINODE"
     ]
 }
