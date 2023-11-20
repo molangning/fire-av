@@ -10,6 +10,7 @@ print("[+] Name to IP range downloader")
 
 RAW_ASN_LIST="https://ftp.ripe.net/ripe/asnames/asn.txt"
 ASN_SEARCH=json.load(open("sources/raw/asn-list.json"))
+WHOIS_IP=socket.gethostbyname("rr.Level3.net")
 
 def request_wrapper(url):
 
@@ -28,7 +29,6 @@ def request_wrapper(url):
 
 def get_ranges(asn):
 
-    WHOIS_IP=socket.gethostbyname("rr.Level3.net")
     s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect((WHOIS_IP,43))
     send_string="-i origin AS%s\r\n"%(asn)
