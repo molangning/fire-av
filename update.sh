@@ -11,3 +11,5 @@ set -o pipefail
 ./scripts/get-tor-exit-list.py
 # Optional, enable if you need it
 # ./scripts/curi0usjack-htaccess-downloader.py
+
+./validate-lists.sh
