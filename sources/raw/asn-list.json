@@ -1,97 +1,97 @@
 {
     "forcepoint": {
-      "match": [
-        "Forcepoint Cloud",
-        "Websense"
-      ],
-      "reject": []
+        "match": [
+            "Forcepoint Cloud",
+            "Websense"
+        ],
+        "reject": []
     },
 
     "censys": {
-      "match": [
-        "CENSYS-ARIN-"
-      ],
-      "reject": []
+        "match": [
+            "CENSYS-ARIN-"
+        ],
+        "reject": []
     },
 
     "domaintools": {
-      "match": [
-        "DOMAINTOOLS"
-      ],
-      "reject": []
+        "match": [
+            "DOMAINTOOLS"
+        ],
+        "reject": []
     },
 
     "zscaler": {
-      "match": [
-        "ZSCALER"
-      ],
-      "reject": []
+        "match": [
+            "ZSCALER"
+        ],
+        "reject": []
     },
 
     "bitdefender": {
-      "match": [
-        "Bitdefender"
-      ],
-      "reject": []
+        "match": [
+            "Bitdefender"
+        ],
+        "reject": []
     },
 
     "ikarus": {
-      "match": [
-        "IKARUS"
-      ],
-      "reject": []
+        "match": [
+            "IKARUS"
+        ],
+        "reject": []
     },
 
     "trustwave": {
-      "match": [
-        "TRUSTWAVE"
-      ],
-      "reject": []
+        "match": [
+            "TRUSTWAVE"
+        ],
+        "reject": []
     },
 
     "fortinet": {
-      "match": [
-        "FORTINET"
-      ],
-      "reject": []
+        "match": [
+            "FORTINET"
+        ],
+        "reject": []
     },
 
     "mcafee": {
-      "match": [
-        "mcafee"
-      ],
-      "reject": []
+        "match": [
+            "mcafee"
+        ],
+        "reject": []
     },
 
     "netskope": {
-      "match": [
-        "NETSKOPE"
-      ],
-      "reject": []
+        "match": [
+            "NETSKOPE"
+        ],
+        "reject": []
     },
 
     "trendmicro": {
-      "match": [
-        "TRENDMICRO"
-      ],
-      "reject": []
+        "match": [
+            "TRENDMICRO"
+        ],
+        "reject": []
     },
 
     "digitalocean": {
-      "match": [
-        "DIGITALOCEAN"
-      ],
-      "reject": []
+        "match": [
+            "DIGITALOCEAN"
+        ],
+        "reject": []
     },
 
     "akamai": {
-      "match": [
-        "AKAMAI",
-        "NOMINUM"
-      ],
-      "reject": [
-        "LINODE"
-      ]
+        "match": [
+            "AKAMAI",
+            "NOMINUM"
+        ],
+        "reject": [
+            "LINODE"
+        ]
     },
 
     "linode": {
@@ -102,24 +102,24 @@
     },
 
     "palo-alto": {
-      "match": [
-        "PAN0",
-        "PALO-ALTO-NETWORKS"
-      ],
-      "reject": []
+        "match": [
+            "PAN0",
+            "PALO-ALTO-NETWORKS"
+        ],
+        "reject": []
     },
 
     "proofpoint": {
-      "match": [
-        "PROOFPOINT"
-      ],
-      "reject": []
+        "match": [
+            "PROOFPOINT"
+        ],
+        "reject": []
     },
     
     "messagelabs": {
-      "match": [
-        "Messagelabs"
-      ],
-      "reject": []
+        "match": [
+            "Messagelabs"
+        ],
+        "reject": []
     }
-  }
+}

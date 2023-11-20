@@ -82,13 +82,28 @@ print("[+] loaded a list of %s ASNs"%(len(asn_list)))
 
 target_asn=[]
 
-for file_name,search_terms in ASN_SEARCH.items():
+def matcher(match_cond,content):
+
+    content=content.lower()
+    matches=match_cond["match"]
+    rejects=match_cond["reject"]
+
+    for i in rejects:
+        if i.lower() in content:
+            return False
+
+    for i in matches:
+        if i.lower() in content:
+            return True
+
+    return False
+
+for file_name,search_cond in ASN_SEARCH.items():
     result=[]
     
     for i in asn_list:
-        for j in search_terms:
-            if j.lower() in i[1].lower():
-                result.append(i[0])
+        if matcher(search_cond,i[1]):
+            result.append(i[0])
 
     target_asn.append([file_name,result])
 
