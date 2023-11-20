@@ -102,6 +102,8 @@ for i in target_asn:
     if "\\" in name:
         continue
 
+    asn_list=list(dict.fromkeys(asn_list))
+
     result_ipv4=[]
     result_ipv6=[]
 
@@ -113,6 +115,9 @@ for i in target_asn:
         result_ipv4+=IPv4
         result_ipv6+=IPv6
         time.sleep(0.5)
+
+    result_ipv4=list(dict.fromkeys(result_ipv4))
+    result_ipv6=list(dict.fromkeys(result_ipv6))
 
     print("[+] Got a list of %i IPv4 and %i IPv6 ranges"%(len(result_ipv4),len(result_ipv6)))
 
