@@ -4,13 +4,11 @@
 # Get org to asn list from https://ftp.ripe.net/ripe/asnames/asn.txt
 # then query shadow server api
 
-import requests,json,time
+import requests,json,time,socket
 
 print("[+] Name to IP range downloader")
 
 RAW_ASN_LIST="https://ftp.ripe.net/ripe/asnames/asn.txt"
-API_ASN_LOOKUP_v4="https://api.shadowserver.org/net/asn?prefix=%s"
-API_ASN_LOOKUP_v6="https://api.shadowserver.org/net/asn?prefix=%s&v6"
 ASN_SEARCH=json.load(open("sources/raw/asn-list.json"))
 
 def request_wrapper(url):
@@ -26,6 +24,40 @@ def request_wrapper(url):
         print("[!] Getting %s failed(%i/3)"%(url,i))
 
     return r.text
+
+
+def get_ranges(asn):
+
+    WHOIS_IP=socket.gethostbyname("rr.Level3.net")
+    s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect((WHOIS_IP,43))
+    send_string="-i origin AS%s\r\n"%(asn)
+    s.sendall(send_string.encode("utf-8"))
+    chunk=""
+
+    while True:
+        data=s.recv(4096)
+        if not data:
+            break
+        data=data.decode('utf-8')
+        chunk+=data
+        if data.endswith("\n\n\n"):
+            break
+
+    IPv4=[]
+    IPv6=[]
+
+    for i in chunk.split('\n'):
+        if not i:
+            continue
+
+        if i.startswith("route:"):
+            IPv4.append(i[6:].strip())
+
+        if i.startswith("route6:"):
+            IPv6.append(i[7:].strip())
+
+    return IPv4,IPv6
 
 asn_lists_raw=request_wrapper(RAW_ASN_LIST)
 print("[+] Got raw ASNs list")
@@ -67,15 +99,12 @@ for i in target_asn:
 
     print("[+] Getting %s ASNs"%(name))
     print("[+] %s's ASNs: %s"%(name,",".join(asn_list)))
+    
     for j in asn_list:
-        result_ipv4+=json.loads(request_wrapper(API_ASN_LOOKUP_v4%(j)))
+        IPv4,IPv6=get_ranges(j)
+        result_ipv4+=IPv4
+        result_ipv6+=IPv6
         time.sleep(0.5)
-        # Backend throwing weird results for ipv6 queries
-        # Should be fixed within next week
-        # TODO check if it gets fixed
-        #
-        # result_ipv6+=json.loads(request_wrapper(API_ASN_LOOKUP_v6%(j)))
-        # time.sleep(0.5)
 
     print("[+] Got a list of %i IPv4 and %i IPv6 ranges"%(len(result_ipv4),len(result_ipv6)))
 
