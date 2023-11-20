@@ -11,7 +11,10 @@
     "zscaler": [
         "ZSCALER"
     ],
-    "bitdefender":[
+    "bitdefender": [
         "Bitdefender"
+    ],
+    "ikarus": [
+        "IKARUS"
     ]
 }
