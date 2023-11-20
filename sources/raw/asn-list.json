@@ -40,5 +40,9 @@
         "AKAMAI",
         "NOMINUM",
         "LINODE"
+    ],
+    "palo-alto": [
+        "PAN0",
+        "PALO-ALTO-NETWORKS"
     ]
 }
