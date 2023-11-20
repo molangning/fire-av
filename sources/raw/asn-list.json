@@ -1,54 +1,109 @@
 {
-    "forcepoint": [
+    "forcepoint": {
+      "match": [
         "Forcepoint Cloud",
         "Websense"
-    ],
-    "censys": [
+      ],
+      "reject": []
+    },
+    "censys": {
+      "match": [
         "CENSYS-ARIN-"
-    ],
-    "domaintools": [
+      ],
+      "reject": []
+    },
+    "domaintools": {
+      "match": [
         "DOMAINTOOLS"
-    ],
-    "zscaler": [
+      ],
+      "reject": []
+    },
+    "zscaler": {
+      "match": [
         "ZSCALER"
-    ],
-    "bitdefender": [
+      ],
+      "reject": []
+    },
+    "bitdefender": {
+      "match": [
         "Bitdefender"
-    ],
-    "ikarus": [
+      ],
+      "reject": []
+    },
+    "ikarus": {
+      "match": [
         "IKARUS"
-    ],
-    "trustwave":[
+      ],
+      "reject": []
+    },
+    "trustwave": {
+      "match": [
         "TRUSTWAVE"
-    ],
-    "fortinet": [
+      ],
+      "reject": []
+    },
+    "fortinet": {
+      "match": [
         "FORTINET"
-    ], 
-    "mcafee": [
+      ],
+      "reject": []
+    },
+    "mcafee": {
+      "match": [
         "mcafee"
-    ], 
-    "netskope": [
+      ],
+      "reject": []
+    },
+    "netskope": {
+      "match": [
         "NETSKOPE"
-    ],
-    "trendmicro": [
+      ],
+      "reject": []
+    },
+    "trendmicro": {
+      "match": [
         "TRENDMICRO"
-    ],
-    "digitalocean": [
+      ],
+      "reject": []
+    },
+    "digitalocean": {
+      "match": [
         "DIGITALOCEAN"
-    ],
-    "akamai": [
+      ],
+      "reject": []
+    },
+    "akamai": {
+      "match": [
         "AKAMAI",
-        "NOMINUM",
+        "NOMINUM"
+      ],
+      "reject": [
         "LINODE"
-    ],
-    "palo-alto": [
+      ]
+    },
+    "linode": {
+        "match": [
+            "LINODE"
+        ],
+        "reject": []
+    },
+    "palo-alto": {
+      "match": [
         "PAN0",
         "PALO-ALTO-NETWORKS"
-    ],
-    "proofpoint": [
+      ],
+      "reject": []
+    },
+    "proofpoint": {
+      "match": [
         "PROOFPOINT"
-    ], 
-    "messagelabs": [
+      ],
+      "reject": []
+    },
+    "messagelabs": {
+      "match": [
         "Messagelabs"
-    ]
-}
+      ],
+      "reject": []
+    }
+  }
