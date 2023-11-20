@@ -1,6 +1,7 @@
 {
     "forcepoint": [
-        "Forcepoint Cloud"
+        "Forcepoint Cloud",
+        "Websense"
     ],
     "censys": [
         "CENSYS-ARIN-"
