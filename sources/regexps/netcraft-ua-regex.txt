@@ -1,1 +1,1 @@
-/.*?netcraft.*/
+/.*?netcraft.*/i
