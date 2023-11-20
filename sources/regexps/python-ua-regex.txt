@@ -1,2 +1,2 @@
-/^Python-urllib\/.*$/
-/^python-requests\/.*$/
+/Python-urllib.*/
+/python-requests.*/

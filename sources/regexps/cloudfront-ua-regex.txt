@@ -1,1 +1,1 @@
-/^.*cloudfront.*$/i
+/.*?cloudfront.*/i
