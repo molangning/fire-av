@@ -4,6 +4,7 @@ I use this file to keep track of ips I need to add to the blacklist
 [x] https://docs.google.com/spreadsheets/d/1_rK0SE_dyYKiobqvth0aADsGkZk3DPDfoSbONXf8dxg
 [x] https://ip-ranges.amazonaws.com/ip-ranges.json
 [x] https://www.microsoft.com/en-us/download/details.aspx?id=56519
+[ ] https://github.com/danielmiessler/SecLists/blob/master/Fuzzing/User-Agents/software-type-specific/crawler.txt
 [ ] https://developers.google.com/search/docs/crawling-indexing/verifying-googlebot
 [ ] shodan, zoomeye, censys, criminal ip
 
