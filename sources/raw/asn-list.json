@@ -122,5 +122,12 @@
             "MessageLabs"
         ],
         "reject": []
+    },
+
+    "barracuda": {
+        "match": [
+            "BARRACUDA"
+        ],
+        "reject": []
     }
 }
