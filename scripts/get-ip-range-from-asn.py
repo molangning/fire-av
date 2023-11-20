@@ -94,6 +94,14 @@ for file_name,search_terms in ASN_SEARCH.items():
 
 for i in target_asn:
     name,asn_list=i
+    # anti dir traversal check
+    # for untrusted lists imports
+
+    if "/" in name:
+        continue
+    if "\\" in name:
+        continue
+
     result_ipv4=[]
     result_ipv6=[]
 
