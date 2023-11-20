@@ -16,5 +16,11 @@
     ],
     "ikarus": [
         "IKARUS"
+    ],
+    "trustwave":[
+        "TRUSTWAVE"
+    ],
+    "fortinet": [
+        "FORTINET"
     ]
 }
