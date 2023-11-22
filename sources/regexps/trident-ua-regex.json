@@ -1,1 +1,6 @@
-[{"regex":"Trident","flags":""}]
+[
+    {
+        "regex": "Trident",
+        "flags": ""
+    }
+]

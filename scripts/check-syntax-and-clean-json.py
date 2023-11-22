@@ -38,6 +38,7 @@ except Exception as e:
     exit(2)
 
 for k,v in asn_list.items():
+
     if ['match', 'reject']!=list(v.keys()):
         print("[!] %s does not fit the asn format!"%(i))
         exit(2)
@@ -53,3 +54,19 @@ for k,v in asn_list.items():
         exit(2)
 
 print("[+] ASN list checks passed")
+
+for i in regexps_files:
+    try:
+        raw_content=json.load(open(i))
+        json.dump(raw_content,open(i,"w"),indent=4)
+    except Exception as e:
+        print("[!] Error in formating file %s!"%(i))
+        print("[!] Exception: %s"%(e.msg))
+        exit(2)
+
+try:
+    json.dump(asn_list,open("sources/raw/asn-list.json","w"),indent=4)
+except Exception as e:
+    print("[!] Error in formating file %s!"%(i))
+    print("[!] Exception: %s"%(e.msg))
+    exit(2)

@@ -1,1 +1,6 @@
-[{"regex":"cloudfront","flags":"i"}]
+[
+    {
+        "regex": "cloudfront",
+        "flags": "i"
+    }
+]

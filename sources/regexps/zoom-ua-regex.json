@@ -1,1 +1,6 @@
-[{"regex":"Zoom","flags":""}]
+[
+    {
+        "regex": "Zoom",
+        "flags": ""
+    }
+]

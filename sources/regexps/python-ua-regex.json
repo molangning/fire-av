@@ -1,2 +1,18 @@
-[{"regex":"Python-urllib","flags":""},
-{"regex":"python-requests","flags":""}]
+[
+    {
+        "regex": "Python-urllib/",
+        "flags": ""
+    },
+    {
+        "regex": "python-requests/",
+        "flags": ""
+    },
+    {
+        "regex": "Python/",
+        "flags": "i"
+    },
+    {
+        "regex": "aiohttp/",
+        "flags": "i"
+    }
+]

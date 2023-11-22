@@ -1,1 +1,6 @@
-[{"regex":"Wget","flags":""}]
+[
+    {
+        "regex": "Wget",
+        "flags": ""
+    }
+]

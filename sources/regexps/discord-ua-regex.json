@@ -1,4 +1,18 @@
-[{"regex":"DiscordBots","flags":""},
-{"regex":"Discordbot","flags":""},
-{"regex":"discordapp.com","flags":""},
-{"regex":"discord.com","flags":""}]
+[
+    {
+        "regex": "Discord(-|)bot",
+        "flags": "i"
+    },
+    {
+        "regex": "discordapp.com",
+        "flags": ""
+    },
+    {
+        "regex": "discordjs",
+        "flags": "i"
+    },
+    {
+        "regex": "discord.js",
+        "flags": "i"
+    }
+]

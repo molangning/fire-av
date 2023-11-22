@@ -1,1 +1,6 @@
-[{"regex":"Mattermost","flags":""}]
+[
+    {
+        "regex": "Mattermost",
+        "flags": ""
+    }
+]

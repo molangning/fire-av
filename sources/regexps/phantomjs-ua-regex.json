@@ -1,1 +1,6 @@
-[{"regex":"PhantomJS","flags":""}]
+[
+    {
+        "regex": "PhantomJS",
+        "flags": ""
+    }
+]

@@ -1,1 +1,6 @@
-[{"regex":"netcraft","flags":"i"}]
+[
+    {
+        "regex": "netcraft",
+        "flags": "i"
+    }
+]

@@ -1,1 +1,6 @@
-[{"regex":"Lynx\/","flags":""}]
+[
+    {
+        "regex": "Lynx/",
+        "flags": ""
+    }
+]

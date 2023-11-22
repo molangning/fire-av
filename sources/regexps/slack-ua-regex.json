@@ -1,10 +1,10 @@
 [
     {
-        "regex": "CensysInspect",
+        "regex": "Slack",
         "flags": ""
     },
     {
-        "regex": "censys.io",
+        "regex": "api\.slack\.com",
         "flags": ""
     }
 ]

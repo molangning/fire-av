@@ -6,84 +6,72 @@
         ],
         "reject": []
     },
-
     "censys": {
         "match": [
             "CENSYS-ARIN-"
         ],
         "reject": []
     },
-
     "domaintools": {
         "match": [
             "DOMAINTOOLS"
         ],
         "reject": []
     },
-
     "zscaler": {
         "match": [
             "ZSCALER"
         ],
         "reject": []
     },
-
     "bitdefender": {
         "match": [
             "Bitdefender"
         ],
         "reject": []
     },
-
     "ikarus": {
         "match": [
             "IKARUS"
         ],
         "reject": []
     },
-
     "trustwave": {
         "match": [
             "TRUSTWAVE"
         ],
         "reject": []
     },
-
     "fortinet": {
         "match": [
             "FORTINET"
         ],
         "reject": []
     },
-
     "mcafee": {
         "match": [
             "mcafee"
         ],
         "reject": []
     },
-
     "netskope": {
         "match": [
             "NETSKOPE"
         ],
         "reject": []
     },
-
     "trendmicro": {
         "match": [
             "TRENDMICRO"
         ],
         "reject": []
     },
-
     "digitalocean": {
         "match": [
             "DIGITALOCEAN"
         ],
         "reject": []
     },
-
     "akamai": {
         "match": [
             "AKAMAI",
@@ -93,14 +81,12 @@
             "LINODE"
         ]
     },
-
     "linode": {
         "match": [
             "LINODE"
         ],
         "reject": []
     },
-
     "palo-alto": {
         "match": [
             "PAN0",
@@ -108,14 +94,12 @@
         ],
         "reject": []
     },
-
     "proofpoint": {
         "match": [
             "PROOFPOINT"
         ],
         "reject": []
     },
-    
     "symantec": {
         "match": [
             "Symantec",
@@ -123,7 +107,6 @@
         ],
         "reject": []
     },
-
     "barracuda": {
         "match": [
             "BARRACUDA"

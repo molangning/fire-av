@@ -1,1 +1,0 @@
-Mozilla/5.0 (compatible; CensysInspect/1.1; +https://about.censys.io/)

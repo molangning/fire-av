@@ -1,1 +1,6 @@
-[{"regex":"curl\/","flags":""}]
+[
+    {
+        "regex": "curl/",
+        "flags": ""
+    }
+]
