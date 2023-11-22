@@ -1,3 +1,0 @@
-/.*?DiscordBots.*/
-/.*?Discordbot.*/
-/.*?+https://discordapp.com.*/

@@ -1,2 +1,0 @@
-/Python-urllib.*/
-/python-requests.*/
