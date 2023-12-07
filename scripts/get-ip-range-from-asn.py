@@ -26,28 +26,45 @@ def request_wrapper(url):
 
     return r.text
 
-
-def get_ranges(asn):
+def get_ranges_raw(asn):
 
     s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect((WHOIS_IP,43))
     send_string="-i origin AS%s\r\n"%(asn)
     s.sendall(send_string.encode("utf-8"))
     chunk=""
+    data=""
 
     while True:
-        data=s.recv(4096)
-        if not data:
+        chunk=s.recv(4096)
+        if not chunk:
             break
-        data=data.decode('utf-8')
-        chunk+=data
-        if data.endswith("\n\n\n"):
+        chunk=chunk.decode('utf-8')
+        data+=chunk
+        if chunk.endswith("\n\n\n"):
             break
+
+    return data
+
+def get_ranges(asn):
+
+    for i in range(1,4):
+
+        try:
+            data=get_ranges_raw(asn)
+            break
+        except Exception as e:
+            print("[!] Getting ASN %s failed(%i/3)"%(asn,i))
+            print("[!] Error message: %s"%(e))
+
+    if i==3:
+        print("[!] Failed to get ASN IP ranges!")
+        exit(2)
 
     IPv4=[]
     IPv6=[]
 
-    for i in chunk.split('\n'):
+    for i in data.split('\n'):
         if not i:
             continue
 
