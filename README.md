@@ -45,3 +45,6 @@ The `regexps` directory in `sources/user-agents` contains regexps rules to match
 ## Advisories
 This list should only be used for red team exercises/engagements and should not be used for any nefarious purposes you have in mind.
 IPv4 is currently supported, but IPv6 support is not supported and has no eta either
+
+## TODOs
+- [ ] IP range "collapser", bunches up ip address using cidr notation.
