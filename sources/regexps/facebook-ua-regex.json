@@ -1,0 +1,10 @@
+[
+    {
+        "regex": "facebot",
+        "flags": "i"
+    },
+    {
+        "regex": "facebook",
+        "flags": "i"
+    }
+]

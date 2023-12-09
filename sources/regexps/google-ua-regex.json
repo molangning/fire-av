@@ -1,0 +1,6 @@
+[
+    {
+        "regex": "Googlebot",
+        "flags": "i"
+    }
+]
