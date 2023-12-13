@@ -1,0 +1,11 @@
+[
+    {
+        "regex": "BlitzBot",
+        "flags": "i"
+    },
+    {
+        "regex": "B-l-i-t-z-B-O-T",
+        "flags": "i"
+    }
+    
+]

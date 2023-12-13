@@ -1,10 +1,14 @@
 [
     {
         "regex": "msnbot",
-        "flags": ""
+        "flags": "i"
     },
     {
         "regex": "bingbot",
         "flags": "i"
+    },
+    {
+        "regex": "BingPreview",
+        "flags": ""
     }
 ]

@@ -1,0 +1,18 @@
+[
+    {
+        "regex": "via Wayback Save Page",
+        "flags": ""
+    },
+    {
+        "regex": "Archive-It",
+        "flags": ""
+    },
+    {
+        "regex": "archive\\.org",
+        "flags": ""
+    },
+    {
+        "regex": "ia_archiver",
+        "flags": ""
+    }
+]

@@ -1,0 +1,26 @@
+[
+    {
+        "regex": "spider",
+        "flags": "i"
+    },
+    {
+        "regex": "crawler",
+        "flags": "i"
+    },
+    {
+        "regex": "bot",
+        "flags": "i"
+    },
+    {
+        "regex": "search",
+        "flags": "i"
+    },
+    {
+        "regex": "(\\+|)http(s|)://",
+        "flags": "i"
+    },
+    {
+        "regex": "(www\\.)[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}",
+        "flags": "i"
+    }
+]

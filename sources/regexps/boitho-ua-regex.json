@@ -1,0 +1,6 @@
+[
+    {
+        "regex": "boitho.com-(dc|robot)",
+        "flags": ""
+    }
+]
