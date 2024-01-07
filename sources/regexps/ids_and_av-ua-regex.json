@@ -1,9 +1,5 @@
 [
     {
-        "regex": "Trident",
-        "flags": ""
-    },
-    {
         "regex": "Covario( |)IDS",
         "flags": ""
     }
