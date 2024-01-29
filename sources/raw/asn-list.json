@@ -112,5 +112,12 @@
             "BARRACUDA"
         ],
         "reject": []
+    },
+    "cloudflare-all": {
+        "match": [
+            "CLOUDFLARE",
+            "Cloudflare"
+        ],
+        "reject": []
     }
 }
