@@ -92,12 +92,27 @@ for i in TAGS:
     asn_list = request_wrapper(BGP_TOOLS_TAGS_API_ENDPOINT%(i)).splitlines()
 
     print("[+] Got a list of %i ASNs"%(len(asn_list)))
+
+    # Tells the user every 10 asn about the status
+
+    counter=0
+    current=1
+    limit=10
     
     for j in asn_list:
+
+        counter+=1
+
         IPv4,IPv6=get_ranges(j)
         result_ipv4.update(IPv4)
         result_ipv6.update(IPv6)
         time.sleep(0.5)
+
+        if counter == limit:
+            counter=0
+            print("[+] %i ASNs left to check"%(len(asn_list)-current))
+        
+        current+=1
 
     result_ipv4=list(result_ipv4)
     result_ipv6=list(result_ipv6)

@@ -119,5 +119,41 @@
             "Cloudflare"
         ],
         "reject": []
+    },
+    "alibaba": {
+        "match": [
+            "alibaba"
+        ],
+        "reject": []
+    },
+    "tencent": {
+        "match": [
+            "tencent"
+        ],
+        "reject": []
+    },
+    "huawei-cloud": {
+        "match": [
+            "Huawei Cloud"
+        ],
+        "reject": []
+    },
+    "kingsoft": {
+        "match": [
+            "Kingsoft"
+        ],
+        "reject": []
+    },
+    "baidu": {
+        "match": [
+            "Baidu"
+        ],
+        "reject": []
+    },
+    "inspur": {
+        "match": [
+            "Inspur"
+        ],
+        "reject": []
     }
 }

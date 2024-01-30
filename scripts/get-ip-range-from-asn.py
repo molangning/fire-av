@@ -146,6 +146,7 @@ for i in target_asn:
     print("[+] %s's ASNs: %s"%(name,",".join(asn_list)))
     
     for j in asn_list:
+
         IPv4,IPv6=get_ranges(j)
         result_ipv4+=IPv4
         result_ipv6+=IPv6
