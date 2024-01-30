@@ -1,4 +1,4 @@
-name: Data updater every 15 days
+name: Data updater every 3 days
 
 on:
   schedule:
