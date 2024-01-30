@@ -16,7 +16,7 @@ for i in dirs:
 
 for i in files:
     
-    if i.rsplit(".",1) in ignore_file_exts:
+    if i.rsplit(".",1)[-1] in ignore_file_exts:
         continue
     
     f=open(i,"r")
