@@ -6,22 +6,25 @@
 
 import requests,json,time,socket
 
-print("[+] Name to IP range downloader")
+print("[+] Tags to IP range downloader")
 
-RAW_ASN_LIST="https://ftp.ripe.net/ripe/asnames/asn.txt"
-ASN_SEARCH=json.load(open("sources/raw/asn-list.json"))
+BGP_TOOLS_TAGS_API_ENDPOINT = "https://bgp.tools/tags/%s.txt"
 WHOIS_IP=socket.gethostbyname("rr.level3.net")
+TAGS=["vpn","tor"]
 
 def request_wrapper(url):
 
     for i in range(1,4):
-        r=requests.get(url)
+        r=requests.get(url, headers={"User-Agent":"Fire-AV updater"})
+
         if r.status_code==200:
             # print("[+] Got %s successfully!"%(url))
             break
+        
         if i==3:
             print("[!] Failed to get %s."%(url))
             exit(2)
+        
         print("[!] Getting %s failed(%i/3)"%(url,i))
 
     return r.text
@@ -30,7 +33,7 @@ def get_ranges_raw(asn):
 
     s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect((WHOIS_IP,43))
-    send_string="-i origin AS%s\r\n"%(asn)
+    send_string="-i origin %s\r\n"%(asn)
     s.sendall(send_string.encode("utf-8"))
     chunk=""
     data=""
@@ -54,7 +57,7 @@ def get_ranges(asn):
             data=get_ranges_raw(asn)
             break
         except Exception as e:
-            print("[!] Getting ASN %s failed(%i/3)"%(asn,i))
+            print("[!] Getting %s failed(%i/3)"%(asn,i))
             print("[!] Error message: %s"%(e))
 
     if i==3:
@@ -64,7 +67,7 @@ def get_ranges(asn):
     IPv4=[]
     IPv6=[]
 
-    for i in data.split('\n'):
+    for i in data.splitlines():
         if not i:
             continue
 
@@ -74,80 +77,21 @@ def get_ranges(asn):
         if i.startswith("route6:"):
             IPv6.append(i[7:].strip())
 
-    if not len(IPv4):
-        print("[!] No IPv4 ranges found for AS%s"%(asn))
+    if not len(IPv4) and not len(IPv6):
+        print("[!] No IP ranges found for %s"%(asn))
 
-    if not len(IPv6):
-        print("[!] No IPv6 ranges found for AS%s"%(asn))
+    return IPv4, IPv6
 
-
-    return IPv4,IPv6
-
-asn_lists_raw=request_wrapper(RAW_ASN_LIST)
-print("[+] Got raw ASNs list")
-asn_list=[]
-
-for i in asn_lists_raw.split('\n'):
+for i in TAGS:
     
-    if not i:
-        continue
-
-    asn, name_and_cc=i.split(" ",1)
-
-    if "reserved by" in name_and_cc:
-        name=name_and_cc
-        cc="zz"
-    else:
-        name,cc=name_and_cc.rsplit(", ",1)
-
-    asn_list.append([asn,name,cc])
-
-print("[+] loaded a list of %s ASNs"%(len(asn_list)))
-
-target_asn=[]
-
-def matcher(match_cond,content):
-
-    content=content.lower()
-    matches=match_cond["match"]
-    rejects=match_cond["reject"]
-
-    for i in rejects:
-        if i.lower() in content:
-            return False
-
-    for i in matches:
-        if i.lower() in content:
-            return True
-
-    return False
-
-for file_name,search_cond in ASN_SEARCH.items():
-    result=[]
-    
-    for i in asn_list:
-        if matcher(search_cond,i[1]):
-            result.append(i[0])
-
-    target_asn.append([file_name,result])
-
-for i in target_asn:
-    name,asn_list=i
-    # anti dir traversal check
-    # for untrusted lists imports
-
-    if "/" in name:
-        continue
-    if "\\" in name:
-        continue
-
-    asn_list=list(dict.fromkeys(asn_list))
-
     result_ipv4=[]
     result_ipv6=[]
 
-    print("[+] Getting %s ASNs"%(name))
-    print("[+] %s's ASNs: %s"%(name,",".join(asn_list)))
+    print("[+] Getting ASNs under %s tag"%(i))
+    
+    asn_list = request_wrapper(BGP_TOOLS_TAGS_API_ENDPOINT%(i)).splitlines()
+
+    print("Got a list of %i ASNs"%(len(asn_list)))
     
     for j in asn_list:
         IPv4,IPv6=get_ranges(j)
@@ -162,8 +106,8 @@ for i in target_asn:
 
     if len(result_ipv4) > 0:
         content="\n".join(result_ipv4)
-        open("sources/ips/%s-ips-ipv4.txt"%(name),'w').write(content)
+        open("sources/ips/by-tags/%s-ips-ipv4.txt"%(i),'w').write(content)
 
     if len(result_ipv6) > 0:
         content="\n".join(result_ipv6)
-        open("sources/ips/%s-ips-ipv6.txt"%(name),'w').write(content)
+        open("sources/ips/by-tags/%s-ips-ipv6.txt"%(i),'w').write(content)

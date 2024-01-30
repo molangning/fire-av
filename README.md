@@ -20,6 +20,7 @@ ips/user-agents that fits the blacklist should be served an normal webpage or an
 |   directory path  |      Description      |
 | ----------------- | --------------------- |
 | [sources/ips](sources/ips) | Directory containing a list of ips |
+| [sources/ips/by-tags](sources/ips/by-tags) | Directory containing a list of ips labeled with tags by [bgp.tools](https://bgp.tools/)|
 | [sources/user-agents](sources/user-agents) | Directory containing a list of User agents |
 
 The `regexps` directory in `sources/user-agents` contains regexps rules to match common bots. All regexps are in javascript format so you need to parse them.

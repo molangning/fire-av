@@ -6,9 +6,13 @@ set -o pipefail
 
 ./scripts/get-aws-ranges.py
 ./scripts/get-azure-ranges.py
+./scripts/get-cloudflare-ip-ranges.py
 ./scripts/get-google-cloud-ranges.py
+./scripts/get-ip-range-by-tags.py
 ./scripts/get-ip-range-from-asn.py
+./scripts/get-ip-range-from-isc.py
 ./scripts/get-tor-exit-list.py
+
 # Optional, enable if you need it
 # ./scripts/curi0usjack-htaccess-downloader.py
 
