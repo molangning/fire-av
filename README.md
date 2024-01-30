@@ -1,5 +1,5 @@
 # Fire-AV
-Fire-AV is a simple solution to your AV avoiding needs. Simply use the ips.txt file to begin blocking popular AV and cloud providers ips.
+Fire-AV is a simple solution to your bad traffic/AV avoiding needs. Simply use the ips.txt file to begin blocking popular AV and cloud providers ips.
 
 ## Status
 Fire-AV is now in its stable stage! Changes may still be added to `asn-list.json` and formatting may change overtime(but less frequently)
