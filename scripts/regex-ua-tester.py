@@ -22,6 +22,8 @@ for root,dirs,files in os.walk('sources/regexps'):
 
         regexps_files.append(os.path.join(root,file))
 
+passed_check=True
+
 for i in regexps_files:
     
     try:
@@ -44,7 +46,12 @@ for i in regexps_files:
     except Exception as e:
         print("[!] Failed to load %s!"%(i))
         print("[!] Error message: %s"%(e))
-        exit(2)
+        passed_check=False
+
+if not passed_check:
+    print("[!] One or multiple checks failed for regex checks")
+    exit(2)
+
 
 def check_for_regex(regexps,ua):
 

@@ -15,6 +15,8 @@ for i in dirs:
                 continue
             files.append(os.path.join(root,file))
 
+passed_check=True
+
 for i in files:
     f=open(i)
     contents=f.read()
@@ -26,8 +28,12 @@ for i in files:
         if not re.match(IPV4_REGEX,j):
             print("[!] %s did not pass the IPv4 regex check"%(j))
             print("[!] Offending file: %s"%(i))
-            exit(2)
+            passed_check=False
     # print("[+] %s passed IPv4 regex check"%(i))
+
+if not passed_check:
+    print("[!] One or multiple checks failed for ipv4 ranges")
+    exit(2)
 
 print("[+] All IPv4 checks succeeded")
 exit(0)

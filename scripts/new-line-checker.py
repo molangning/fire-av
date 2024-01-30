@@ -14,6 +14,8 @@ for i in dirs:
             for ignore_ext in ignore_file_exts:
                 files.append(os.path.join(root,file))
 
+passed_check=True
+
 for i in files:
     
     if i.rsplit(".",1)[-1] in ignore_file_exts:
@@ -27,8 +29,11 @@ for i in files:
     
     if contents[-1] == '\n':
         print("[!] %s ends with a new line"%(i))
-        exit(2)
-    # print("[+] %s passed new line check"%(i))
+        passed_check=False
+
+if not passed_check:
+    print("[!] One or multiple checks failed for new lines")
+    exit(2)
 
 print("[+] All files passed checks")
 exit(0)

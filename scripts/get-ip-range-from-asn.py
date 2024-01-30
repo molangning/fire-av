@@ -74,12 +74,8 @@ def get_ranges(asn):
         if i.startswith("route6:"):
             IPv6.append(i[7:].strip())
 
-    if not len(IPv4):
-        print("[!] No IPv4 ranges found for AS%s"%(asn))
-
-    if not len(IPv6):
-        print("[!] No IPv6 ranges found for AS%s"%(asn))
-
+    if not len(IPv4) and not len(IPv6):
+        print("[!] No IP ranges found for AS%s"%(asn))
 
     return IPv4,IPv6
 

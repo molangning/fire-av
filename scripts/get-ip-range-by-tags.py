@@ -84,23 +84,23 @@ def get_ranges(asn):
 
 for i in TAGS:
     
-    result_ipv4=[]
-    result_ipv6=[]
+    result_ipv4=set()
+    result_ipv6=set()
 
     print("[+] Getting ASNs under %s tag"%(i))
     
     asn_list = request_wrapper(BGP_TOOLS_TAGS_API_ENDPOINT%(i)).splitlines()
 
-    print("Got a list of %i ASNs"%(len(asn_list)))
+    print("[+] Got a list of %i ASNs"%(len(asn_list)))
     
     for j in asn_list:
         IPv4,IPv6=get_ranges(j)
-        result_ipv4+=IPv4
-        result_ipv6+=IPv6
+        result_ipv4.update(IPv4)
+        result_ipv6.update(IPv6)
         time.sleep(0.5)
 
-    result_ipv4=list(dict.fromkeys(result_ipv4))
-    result_ipv6=list(dict.fromkeys(result_ipv6))
+    result_ipv4=list(result_ipv4)
+    result_ipv6=list(result_ipv6)
 
     print("[+] Got a list of %i IPv4 and %i IPv6 ranges"%(len(result_ipv4),len(result_ipv6)))
 
