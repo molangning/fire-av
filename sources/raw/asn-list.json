@@ -113,7 +113,7 @@
         ],
         "reject": []
     },
-    "cloudflare-all": {
+    "cloudflare": {
         "match": [
             "CLOUDFLARE",
             "Cloudflare"
