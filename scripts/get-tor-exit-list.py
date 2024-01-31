@@ -1,25 +1,35 @@
 #!/usr/bin/env python3
+
+import re
 import requests
 
 print("[+] tor node list downloader")
 
-for i in range(1,4):
-    r=requests.get("https://check.torproject.org/torbulkexitlist")
-    if r.status_code == 200:
-        print("[+] Got a list of tor nodes!")
-        break
-    if i==3:
-        print("[!] Failed to get list of tor exits.")
-        exit(2)
-    print("[!] Getting tor exits failed(%i/3)"%(i))
+def request_wrapper(url):
 
-contents=[]
+    for i in range(1,4):
+        r=requests.get(url)
+        if r.status_code==200:
+            # print("[+] Got %s successfully!"%(url))
+            break
+        if i==3:
+            print("[!] Failed to get %s."%(url))
+            exit(2)
+        print("[!] Getting %s failed(%i/3)"%(url,i))
 
-for i in r.text.split('\n'):
-    if len(i)==0:
-        continue
+    return r.text
 
-    contents.append(i+"/32")
+content = request_wrapper("https://metrics.torproject.org/collector/recent/exit-lists/")
+matches = re.findall(r"(https:\/\/collector.torproject.org\/recent\/exit-lists\/[0-9]{4}-([0-9]{2}-){4}[0-9]{2})",content)
+urls = [url[0] for url in matches]
+urls.sort(reverse=True)
+
+exit_list = request_wrapper(urls[0])
+exit_nodes = set()
+
+for i in exit_list.splitlines():
+    if i.startswith("ExitAddress"):
+        exit_nodes.add(i.split(" ")[1]+"/32")
 
 f=open("sources/ips/tor-exit-ips-ipv4.txt","w")
-f.write("\n".join(contents))
+f.write("\n".join(exit_nodes))
