@@ -17,13 +17,13 @@ jobs:
           
       - name: Commit files if changed
         run: |
-          git pull
+          git add -N .
 
           if [ -z "$(git ls-files --modified sources/)" ]; then
               echo "[+] No files were changed"
           else
               echo "[+] Files were changed! Pushing changed..."
-              git fetch -a
+              git pull
               git stage sources/
               git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
               git config --local user.email "example@github.com"
