@@ -17,7 +17,7 @@ jobs:
           
       - name: Commit files if changed
         run: |
-          git add -N .
+          git pull
 
           if [ -z "$(git ls-files --modified sources/)" ]; then
               echo "[+] No files were changed"
