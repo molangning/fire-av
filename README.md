@@ -1,4 +1,11 @@
 # Fire-AV
+
+[![Data updater every 30 minutes](https://github.com/molangning/fire-av/actions/workflows/data-updater-30-minutes.yml/badge.svg)](https://github.com/molangning/fire-av/actions/workflows/data-updater-30-minutess.yml)
+[![Data updater every 6 hours](https://github.com/molangning/fire-av/actions/workflows/data-updater-6-hours.yml/badge.svg)](https://github.com/molangning/fire-av/actions/workflows/data-updater-6-hours.yml)
+[![Data updater every 3 days](https://github.com/molangning/fire-av/actions/workflows/data-updater-3-days.yml/badge.svg)](https://github.com/molangning/fire-av/actions/workflows/data-updater-3-days.yml)
+[![Data updater every 15 days](https://github.com/molangning/fire-av/actions/workflows/data-updater-15-days.yml/badge.svg)](https://github.com/molangning/fire-av/actions/workflows/data-updater-15-days.yml)
+[![Data updater every 30 days](https://github.com/molangning/fire-av/actions/workflows/data-updater-30-days.yml/badge.svg)](https://github.com/molangning/fire-av/actions/workflows/data-updater-30-days.yml)
+
 Fire-AV is a simple solution to your bad traffic/AV avoiding needs. Simply use the ips.txt file to begin blocking popular AV and cloud providers ips.
 
 ## Status
