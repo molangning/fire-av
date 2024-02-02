@@ -144,7 +144,8 @@ for i in target_asn:
     if "\\" in name:
         continue
 
-    asn_list=list(dict.fromkeys(asn_list))
+    asn_list=list(set(asn_list))
+    asn_list=random.sample(asn_list, len(asn_list))
 
     result_ipv4=[]
     result_ipv6=[]
