@@ -4,7 +4,6 @@
 ./scripts/get-ip-range-from-isc.py
 ./scripts/get-ip-range-from-asn.py
 
-set -e 
-set -o pipefail
+set -euxo pipefail
 
 ./validate-lists.sh
