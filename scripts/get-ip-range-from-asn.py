@@ -4,13 +4,17 @@
 # Get org to asn list from https://ftp.ripe.net/ripe/asnames/asn.txt
 # then use bgp.tools asn to ip range maping
 
-import requests,json,time,socket
+import requests
+import json
+import time
+import socket
+import random
 
 print("[+] Name to IP range downloader")
 
 RAW_ASN_LIST="https://ftp.ripe.net/ripe/asnames/asn.txt"
 ASN_SEARCH=json.load(open("sources/raw/asn-list.json"))
-WHOIS_IP=socket.gethostbyname("rr.level3.net")
+WHOIS_IPS=["whois.in.bell.ca", "irr.bboi.net", "rr.Level3.net", "rr.ntt.net", "whois.radb.net", "irr.bgp.net.br"]
 
 def request_wrapper(url):
 
@@ -28,38 +32,40 @@ def request_wrapper(url):
 
 def get_ranges_raw(asn):
 
-    s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect((WHOIS_IP,43))
-    send_string="-i origin AS%s\r\n"%(asn)
-    s.sendall(send_string.encode("utf-8"))
-    chunk=""
-    data=""
+    for i in random.sample(WHOIS_IPS, len(WHOIS_IPS)):
+        
+        try:
 
-    while True:
-        chunk=s.recv(4096)
-        if not chunk:
-            break
-        chunk=chunk.decode('utf-8')
-        data+=chunk
-        if chunk.endswith("\n\n\n"):
-            break
+            s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            s.connect((socket.gethostbyname(i), 43))
+            send_string="-i origin AS%s\r\n"%(asn)
+            s.sendall(send_string.encode("utf-8"))
+            chunk=""
+            data=""
 
-    return data
+            while True:
+                chunk=s.recv(4096)
+                if not chunk:
+                    break
+                chunk=chunk.decode('utf-8')
+                data+=chunk
+                if chunk.endswith("\n\n\n"):
+                    break
+
+            return data
+
+        except Exception as e:
+            print("[!] Failed to get %s from %s"%(asn,i))
+            print("[!] Error message: %s"%(e))
+
+    return None
 
 def get_ranges(asn):
 
-    for i in range(1,4):
+    data=get_ranges_raw(asn)
 
-        try:
-            data=get_ranges_raw(asn)
-            break
-        except Exception as e:
-            print("[!] Getting ASN %s failed(%i/3)"%(asn,i))
-            print("[!] Error message: %s"%(e))
-
-    if i==3:
-        print("[!] Failed to get ASN IP ranges!")
-        exit(2)
+    if not data:
+        print("[!] Unable to get ip ranges from any routing registries!")
 
     IPv4=[]
     IPv6=[]

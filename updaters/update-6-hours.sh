@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-set -e 
-set -o pipefail
+set -euxo pipefail
 
 ./scripts/get-aws-ranges.py
 ./scripts/get-azure-ranges.py
