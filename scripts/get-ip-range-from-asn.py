@@ -37,6 +37,7 @@ def get_ranges_raw(asn):
         try:
 
             s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            s.settimeout(30)
             s.connect((socket.gethostbyname(i), 43))
             send_string="-i origin AS%s\r\n"%(asn)
             s.sendall(send_string.encode("utf-8"))
