@@ -18,11 +18,7 @@ def request_wrapper(url, headers={}):
 
     return r.text
 
-ua_dict=json.loads(request_wrapper("https://www.useragents.me/api"))
-
-best_ua = ua_dict["data"][0]['ua']
-
-contents=request_wrapper("https://www.microsoft.com/en-us/download/details.aspx?id=56519",headers={"User-Agent":best_ua})
+contents=request_wrapper("https://www.microsoft.com/en-us/download/details.aspx?id=56519",headers={"User-Agent":'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.3'})
 
 download_url=re.findall(r"https:\/\/download.microsoft.com\/download\/.*?\.json",contents)[0]
 
