@@ -48,6 +48,7 @@ The `regexps` directory in `sources/user-agents` contains regexps rules to match
 ## Usage cases
 - Your phishing domain keeps on getting flagged by AVs but you need them to complete the red team exercise
 - The stager payload is hosted on a webpage and it is CRUCIAL for it to not get detected by the AVs
+- Your server keeps getting hacking attempts, and you want to block them at source (Through iptables or others)
 
 ## Advisories
 This list should only be used for red team exercises/engagements and should not be used for any nefarious purposes you have in mind.
@@ -55,3 +56,4 @@ IPv4 is currently supported, but IPv6 support is not supported and has no eta ei
 
 ## TODOs
 - [ ] IP range "collapser", bunches up ip address using cidr notation.
+- [ ] Blacklist compile
