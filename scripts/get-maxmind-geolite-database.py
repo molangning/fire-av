@@ -146,10 +146,10 @@ def download_all():
     
 
 if not check_fresh():
-    print("Login is invalid")
+    print("[!] Login is invalid")
     exit(2)
 
-print("Login is valid")
+print("[+] Login is valid")
 
 download_all()
 
