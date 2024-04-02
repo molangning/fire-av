@@ -46,6 +46,13 @@ def downloader(url, output_location):
     if "Content-Disposition" not in resp.headers:
         print("[-] Content-Disposition header not found!")
 
+    fbase = output_location.split('/')[-1].split("_")[0]
+
+    for file in os.listdir(output_location.rsplit("/",1)[0]):
+        if file.startswith(fbase):
+            print(f"[+] Replacing file {file}")
+            os.remove(os.path.join(output_location.rsplit("/",1)[0], file))
+
     print(f"[+] Started downloading file {output_location.split('/')[-1]}")
 
     with session.get(url) as r:
