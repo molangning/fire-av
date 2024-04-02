@@ -21,8 +21,6 @@ for i in files:
     if i.rsplit(".",1)[-1] in ignore_file_exts:
         continue
     
-    print(i)
-
     contents = open(i,"r").read()
 
     if len(contents) == 0:
