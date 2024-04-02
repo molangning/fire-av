@@ -1,0 +1,3 @@
+# Ignore some big files
+
+GeoLite2-City-Blocks-*.csv
