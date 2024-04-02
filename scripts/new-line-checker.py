@@ -6,7 +6,7 @@ print("[+] New line check")
 
 files = []
 dirs = ['sources/','blacklists/','whitelists/']
-ignore_file_exts = ["json"]
+ignore_file_exts = ["json", "gz", "zip", "mmdb", "csv"]
 
 for i in dirs:
     for root,_,file_list in os.walk(i):
@@ -21,8 +21,9 @@ for i in files:
     if i.rsplit(".",1)[-1] in ignore_file_exts:
         continue
     
-    f=open(i,"r")
-    contents=f.read()
+    print(i)
+
+    contents = open(i,"r").read()
 
     if len(contents) == 0:
         continue
