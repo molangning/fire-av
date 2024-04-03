@@ -24,7 +24,7 @@ for i in files:
     if len(contents) == 0:
         continue # Empty file
 
-    for j in contents.split('\n'):
+    for j in contents.splitlines():
         if not re.match(IPV4_REGEX,j):
             print("[!] %s did not pass the IPv4 regex check"%(j))
             print("[!] Offending file: %s"%(i))

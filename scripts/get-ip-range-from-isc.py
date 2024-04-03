@@ -47,7 +47,7 @@ for i in raw_ranges:
         ranges[i["type"]][0].append(i["ipv4"]+"/32")
 
     if "ipv6" in i.keys():
-        ranges[i["type"]][0].append(i["ipv6"]+"/128")
+        ranges[i["type"]][1].append(i["ipv6"]+"/128")
 
 for k,v in ranges.items():
 
