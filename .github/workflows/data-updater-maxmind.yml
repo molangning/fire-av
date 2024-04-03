@@ -2,7 +2,8 @@ name: Data updater for maxmind databses
 
 on:
   schedule:
-  - cron: 0 3 * * *
+  - cron: '30 10 * * 2'
+  - cron: '30 10 * * 5'
   
   workflow_dispatch:
 
