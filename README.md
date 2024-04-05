@@ -8,6 +8,8 @@
 
 Fire-AV is a simple solution to your bad traffic/AV avoiding needs. Simply use the ips.txt file to begin blocking popular AV and cloud providers ips.
 
+Aside from blocking av provider, Fire-AV can also be used as an ip encrichment tool to tag source ips
+
 ## Status
 Fire-AV is now in its stable stage! Changes may still be added to `asn-list.json` and formatting may change overtime(but less frequently)
 
@@ -15,7 +17,7 @@ Fire-AV is now in its stable stage! Changes may still be added to `asn-list.json
 It is an arms race to discover AV provider IPs and I need help. If you find any ips that is not in the list please open an github issue so that I can add it.
 
 ## Usage
-I do not recommend directly using the lists provided unless you are willing to do a lot of trial and errors. Instead, You are encouraged to build your own filter list to tailor it to your needs/infrastructure
+I do not recommend directly using the lists provided unless you are willing to do a lot of trial and errors. Instead, You are encouraged to build your own filter list to tailor it to your needs/infrastructure.
 
 The blocklists should be integrated within the http server config(ie .htaccess) or updated dynamically by fetching the list and blocking at runtime. 
 
@@ -51,8 +53,7 @@ The `regexps` directory in `sources/user-agents` contains regexps rules to match
 - Your server keeps getting hacking attempts, and you want to block them at source (Through iptables or others)
 
 ## Advisories
-This list should only be used for red team exercises/engagements and should not be used for any nefarious purposes you have in mind.
-IPv4 is currently supported, but IPv6 support is not supported and has no eta either
+This list should only be used for red team exercises/engagements and for any nefarious purposes you have in mind.
 
 ## TODOs
 - [ ] IP range "collapser", bunches up ip address using cidr notation.
