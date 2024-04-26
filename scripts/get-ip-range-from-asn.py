@@ -35,7 +35,6 @@ def get_ranges_raw(asn):
     for i in random.sample(WHOIS_IPS, len(WHOIS_IPS)):
         
         try:
-
             s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             s.settimeout(30)
             s.connect((socket.gethostbyname(i), 43))
@@ -160,8 +159,8 @@ for i in target_asn:
         result_ipv6+=IPv6
         time.sleep(0.5)
 
-    result_ipv4=list(dict.fromkeys(result_ipv4))
-    result_ipv6=list(dict.fromkeys(result_ipv6))
+    result_ipv4=sorted(list(dict.fromkeys(result_ipv4)))
+    result_ipv6=sorted(list(dict.fromkeys(result_ipv6)))
 
     print("[+] Got a list of %i IPv4 and %i IPv6 ranges"%(len(result_ipv4),len(result_ipv6)))
 
