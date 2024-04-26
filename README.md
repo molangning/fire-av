@@ -13,6 +13,10 @@ Aside from blocking av provider, Fire-AV can also be used as an ip encrichment t
 ## Status
 Fire-AV is now in its stable stage! Changes may still be added to `asn-list.json` and formatting may change overtime(but less frequently)
 
+## Similar projects
+
+[maxmind-geoip-db](https://github.com/molangning/maxmind-geoip-db/) is a mirror to the database maxmind provides for free.
+
 ## Contribution
 It is an arms race to discover AV provider IPs and I need help. If you find any ips that is not in the list please open an github issue so that I can add it.
 
