@@ -34,8 +34,8 @@ for i in azure_ips:
         if ":" in j:
             azure_ipv6.append(j)
 
-azure_ipv4=list(dict.fromkeys(azure_ipv4))
-azure_ipv6=list(dict.fromkeys(azure_ipv6))
+azure_ipv4=sorted(list(dict.fromkeys(azure_ipv4)))
+azure_ipv6=sorted(list(dict.fromkeys(azure_ipv6)))
 
 if len(azure_ipv4) > 0:
     content="\n".join(azure_ipv4)

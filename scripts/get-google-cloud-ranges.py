@@ -42,5 +42,8 @@ for i in ranges["prefixes"]:
     if "ipv6Prefix" in dict_keys:
         ipv6_ranges.append(i['ipv6Prefix'])
 
+ipv4_ranges=sorted(list(dict.fromkeys(ipv4_ranges)))
+ipv6_ranges=sorted(list(dict.fromkeys(ipv6_ranges)))
+
 f=open("sources/ips/google-cloud-ips-ipv4.txt","w").write('\n'.join(ipv4_ranges))
 f=open("sources/ips/google-cloud-ips-ipv6.txt","w").write('\n'.join(ipv6_ranges))

@@ -14,7 +14,7 @@ print("[+] Name to IP range downloader")
 
 RAW_ASN_LIST="https://ftp.ripe.net/ripe/asnames/asn.txt"
 ASN_SEARCH=json.load(open("sources/raw/asn-list.json"))
-WHOIS_IPS=["irr.bboi.net", "rr.Level3.net", "rr.ntt.net", "whois.radb.net", "irr.bgp.net.br"]
+WHOIS_IPS=["rr.Level3.net", "rr.ntt.net", "whois.radb.net", "irr.bgp.net.br"]
 
 def request_wrapper(url):
 

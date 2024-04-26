@@ -31,5 +31,7 @@ for i in exit_list.splitlines():
     if i.startswith("ExitAddress"):
         exit_nodes.add(i.split(" ")[1]+"/32")
 
+exit_nodes = sorted(list(dict.fromkeys(exit_nodes)))
+
 f=open("sources/ips/tor-exit-ips-ipv4.txt","w")
 f.write("\n".join(exit_nodes))

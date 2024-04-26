@@ -4,12 +4,12 @@
 # Get org to asn list from https://ftp.ripe.net/ripe/asnames/asn.txt
 # then use bgp.tools asn to ip range maping
 
-import requests,json,time,socket
+import requests,json,time,socket,random
 
 print("[+] Tags to IP range downloader")
 
 BGP_TOOLS_TAGS_API_ENDPOINT = "https://bgp.tools/tags/%s.txt"
-WHOIS_IP=socket.gethostbyname("rr.level3.net")
+WHOIS_IPS=["rr.Level3.net", "rr.ntt.net", "whois.radb.net", "irr.bgp.net.br"]
 TAGS=["vpn","tor"]
 
 def request_wrapper(url):
@@ -31,43 +31,45 @@ def request_wrapper(url):
 
 def get_ranges_raw(asn):
 
-    s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect((WHOIS_IP,43))
-    send_string="-i origin %s\r\n"%(asn)
-    s.sendall(send_string.encode("utf-8"))
-    chunk=""
-    data=""
+    for i in random.sample(WHOIS_IPS, len(WHOIS_IPS)):
+        
+        try:
+            s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            s.settimeout(30)
+            s.connect((socket.gethostbyname(i), 43))
+            send_string="-i origin %s\r\n"%(asn)
+            s.sendall(send_string.encode("utf-8"))
+            chunk=""
+            data=""
 
-    while True:
-        chunk=s.recv(4096)
-        if not chunk:
-            break
-        chunk=chunk.decode('utf-8')
-        data+=chunk
-        if chunk.endswith("\n\n\n"):
-            break
+            while True:
+                chunk=s.recv(4096)
+                if not chunk:
+                    break
+                chunk=chunk.decode('utf-8')
+                data+=chunk
+                if chunk.endswith("\n\n\n"):
+                    break
 
-    return data
+            return data
+
+        except Exception as e:
+            print("[!] Failed to get %s from %s"%(asn,i))
+            print("[!] Error message: %s"%(e))
+
+    return None
 
 def get_ranges(asn):
 
-    for i in range(1,4):
+    data=get_ranges_raw(asn)
 
-        try:
-            data=get_ranges_raw(asn)
-            break
-        except Exception as e:
-            print("[!] Getting %s failed(%i/3)"%(asn,i))
-            print("[!] Error message: %s"%(e))
-
-    if i==3:
-        print("[!] Failed to get ASN IP ranges!")
-        exit(2)
+    if not data:
+        print("[!] Unable to get ip ranges from any routing registries!")
 
     IPv4=[]
     IPv6=[]
 
-    for i in data.splitlines():
+    for i in data.split('\n'):
         if not i:
             continue
 
@@ -80,7 +82,7 @@ def get_ranges(asn):
     if not len(IPv4) and not len(IPv6):
         print("[!] No IP ranges found for %s"%(asn))
 
-    return IPv4, IPv6
+    return IPv4,IPv6
 
 for i in TAGS:
     
@@ -114,8 +116,8 @@ for i in TAGS:
         
         current+=1
 
-    result_ipv4=list(result_ipv4)
-    result_ipv6=list(result_ipv6)
+    result_ipv4=sorted(list(dict.fromkeys(result_ipv4)))
+    result_ipv6=sorted(list(dict.fromkeys(result_ipv6)))
 
     print("[+] Got a list of %i IPv4 and %i IPv6 ranges"%(len(result_ipv4),len(result_ipv6)))
 

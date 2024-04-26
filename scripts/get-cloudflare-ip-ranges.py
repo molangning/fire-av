@@ -51,8 +51,16 @@ for jd_cloud_range in cloudflare_ranges["jdcloud_cidrs"]:
     elif "." in jd_cloud_range:
         cloudflare_jd_ipv4_ranges.append(jd_cloud_range)
 
+
 cloudflare_ipv4_ranges = cloudflare_ranges["ipv4_cidrs"]
 cloudflare_ipv6_ranges = cloudflare_ranges["ipv6_cidrs"]
+
+cloudflare_ipv4_ranges = sorted(list(dict.fromkeys(cloudflare_ipv4_ranges)))
+cloudflare_ipv6_ranges = sorted(list(dict.fromkeys(cloudflare_ipv6_ranges)))
+
+cloudflare_jd_ipv4_ranges = sorted(list(dict.fromkeys(cloudflare_ipv4_ranges)))
+cloudflare_jd_ipv6_ranges = sorted(list(dict.fromkeys(cloudflare_ipv6_ranges)))
+
 
 f=open("sources/ips/cloudflare-jd-cloud-ips-ipv4.txt","w").write('\n'.join(cloudflare_jd_ipv4_ranges))
 f=open("sources/ips/cloudflare-jd-cloud-ips-ipv6.txt","w").write('\n'.join(cloudflare_jd_ipv6_ranges))

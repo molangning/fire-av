@@ -61,8 +61,8 @@ for k,v in ranges.items():
 
     result_ipv4=v[0]
     result_ipv6=v[1]
-    result_ipv4=list(dict.fromkeys(result_ipv4))
-    result_ipv6=list(dict.fromkeys(result_ipv6))
+    result_ipv4=sorted(list(dict.fromkeys(result_ipv4)))
+    result_ipv6=sorted(list(dict.fromkeys(result_ipv6)))
 
     print("[+] %s has %i IPv4 and %i IPv6 ranges"%(k,len(result_ipv4),len(result_ipv6)))
 
