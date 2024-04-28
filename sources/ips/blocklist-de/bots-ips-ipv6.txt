@@ -1,4 +1,5 @@
 2404:8280:a222:bbbb:bba1:40:ffff:ffff/128
+2804:47d0:19:3ab0:ac64:cfb7:bbb2:7eac/128
 2a05:d01c:b43:8a10:17d8:4716:a31a:47a1/128
 2a05:d01c:b43:8a10:1cc7:2eb1:cb2b:49b2/128
 2a05:d01c:b43:8a10:2dfa:3d4d:9bb4:4dab/128
