@@ -21,11 +21,12 @@ def get_ranges(asn):
 
     data=get_ranges_raw(asn, WHOIS_IPS)
 
-    if not data:
-        print("[!] Unable to get ip ranges from any routing registries!")
-
     IPv4=[]
     IPv6=[]
+
+    if not data:
+        print("[!] Unable to get ip ranges for AS%s from any routing registries!"%(asn))
+        return IPv4,IPv6
 
     for i in data.split('\n'):
         if not i:
