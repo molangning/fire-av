@@ -4,70 +4,28 @@
 # Get org to asn list from https://ftp.ripe.net/ripe/asnames/asn.txt
 # then use bgp.tools asn to ip range maping
 
-import requests,json,time,socket,random
+import time
+from shared_lib.lib import request_wrapper, get_ranges_raw
 
 print("[+] Tags to IP range downloader")
 
 BGP_TOOLS_TAGS_API_ENDPOINT = "https://bgp.tools/tags/%s.txt"
-WHOIS_IPS=["rr.Level3.net", "rr.ntt.net", "whois.radb.net", "irr.bgp.net.br"]
+WHOIS_IPS=["rr.level3.net", "rr.ntt.net", "whois.radb.net", "irr.bgp.net.br"]
 TAGS=["vpn","tor"]
-
-def request_wrapper(url):
-
-    for i in range(1,4):
-        r=requests.get(url, headers={"User-Agent":"Fire-AV updater"})
-
-        if r.status_code==200:
-            # print("[+] Got %s successfully!"%(url))
-            break
-        
-        if i==3:
-            print("[!] Failed to get %s."%(url))
-            exit(2)
-        
-        print("[!] Getting %s failed(%i/3)"%(url,i))
-
-    return r.text
-
-def get_ranges_raw(asn):
-
-    for i in random.sample(WHOIS_IPS, len(WHOIS_IPS)):
-        
-        try:
-            s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            s.settimeout(30)
-            s.connect((socket.gethostbyname(i), 43))
-            send_string="-i origin %s\r\n"%(asn)
-            s.sendall(send_string.encode("utf-8"))
-            chunk=""
-            data=""
-
-            while True:
-                chunk=s.recv(4096)
-                if not chunk:
-                    break
-                chunk=chunk.decode('utf-8')
-                data+=chunk
-                if chunk.endswith("\n\n\n"):
-                    break
-
-            return data
-
-        except Exception as e:
-            print("[!] Failed to get %s from %s"%(asn,i))
-            print("[!] Error message: %s"%(e))
-
-    return None
 
 def get_ranges(asn):
 
-    data=get_ranges_raw(asn)
+    if asn.startswith("AS"):
+        asn = asn[2:]
 
-    if not data:
-        print("[!] Unable to get ip ranges from any routing registries!")
+    data=get_ranges_raw(asn, WHOIS_IPS)
 
     IPv4=[]
     IPv6=[]
+
+    if not data:
+        print("[!] Unable to get ip ranges for AS%s from any routing registries!"%(asn))
+        return IPv4,IPv6
 
     for i in data.split('\n'):
         if not i:
@@ -91,7 +49,7 @@ for i in TAGS:
 
     print("[+] Getting ASNs under %s tag"%(i))
     
-    asn_list = request_wrapper(BGP_TOOLS_TAGS_API_ENDPOINT%(i)).splitlines()
+    asn_list = request_wrapper(BGP_TOOLS_TAGS_API_ENDPOINT%(i), headers={"User-Agent":"Fire-AV updater"}).splitlines()
 
     print("[+] Got a list of %i ASNs"%(len(asn_list)))
 
