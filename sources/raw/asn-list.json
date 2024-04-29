@@ -155,5 +155,17 @@
             "Inspur"
         ],
         "reject": []
+    },
+    "AWEX-Hostinger": {
+        "match": [
+            "AWEX Hostinger"
+        ],
+        "reject": []
+    },
+    "AS-Hostinger": {
+        "match": [
+            "AS-HOSTINGER"
+        ],
+        "reject": []
     }
 }
