@@ -1,26 +1,11 @@
 #!/usr/bin/python3
 
-import requests
+from shared_lib.lib import request_wrapper
+
+GOOGLE_ENDPOINT="https://www.gstatic.com/ipranges/cloud.json"
 
 print("[+] Google cloud ip range downloader")
-ranges={}
-
-for i in range(1,4):
-    r=requests.get("https://www.gstatic.com/ipranges/cloud.json")
-    if r.status_code == 200:
-        print("[+] Got a list of ip ranges!")
-        
-        try:
-            ranges=r.json()
-        except:
-            print("[+] Converting response to dictionary failed")
-            exit(2)
-
-        break
-    if i==3:
-        print("[!] Failed to get the list of ip ranges")
-        exit(2)
-    print("[!] Getting json failed(%i/3)"%(i))
+ranges=request_wrapper(GOOGLE_ENDPOINT, json=True)
 
 if not ranges:
     print("[!] Retrieved dictionary empty")

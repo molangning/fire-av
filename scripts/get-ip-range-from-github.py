@@ -1,26 +1,13 @@
 #!/usr/bin/python3
 
-import requests,json
+from shared_lib.lib import request_wrapper
 
 API_ENDPOINT="https://api.github.com/meta"
 print("[+] Github ip range downloader")
 raw_ranges={}
 
-def request_wrapper(url):
 
-    for i in range(1,4):
-        r=requests.get(url)
-        if r.status_code==200:
-            # print("[+] Got %s successfully!"%(url))
-            break
-        if i==3:
-            print("[!] Failed to get %s."%(url))
-            exit(2)
-        print("[!] Getting %s failed(%i/3)"%(url,i))
-
-    return r.text
-
-raw_ranges = json.loads(request_wrapper(API_ENDPOINT))
+raw_ranges = request_wrapper(API_ENDPOINT, json=True)
 print("[+] Got a list of ip ranges!")
 
 if not raw_ranges:
@@ -69,10 +56,8 @@ for k,v in ranges.items():
     if "\\" in k:
         continue
 
-    result_ipv4=v[0]
-    result_ipv6=v[1]
-    result_ipv4=sorted(list(dict.fromkeys(result_ipv4)))
-    result_ipv6=sorted(list(dict.fromkeys(result_ipv6)))
+    result_ipv4=sorted(list(dict.fromkeys(v[0])))
+    result_ipv6=sorted(list(dict.fromkeys(v[1])))
 
     print("[+] %s has %i IPv4 and %i IPv6 ranges"%(k,len(result_ipv4),len(result_ipv6)))
 
