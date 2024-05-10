@@ -26,7 +26,7 @@ jobs:
               git pull
               git stage sources/
               git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
-              git config --local user.email "example@github.com"
+              git config --local user.email "133737702+molangning@users.noreply.github.com"
               git config --local user.name "GitHub Action"
               git commit -m "[Github Action] Automated lists update."
               git push
