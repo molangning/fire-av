@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 set -euxo pipefail
+export PYTHONUNBUFFERED=1
 
 ./scripts/get-aws-ranges.py
 ./scripts/get-azure-ranges.py
