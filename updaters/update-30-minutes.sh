@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 set -euxo pipefail
+export PYTHONUNBUFFERED=1
 
 ./scripts/get-tor-exit-list.py
 ./scripts/get-ip-range-from-isc.py
