@@ -1,47 +1,35 @@
 #!/usr/bin/python3
 
-# The flow:
-# Get org to asn list from https://ftp.ripe.net/ripe/asnames/asn.txt
-# then use bgp.tools asn to ip range maping
-
-import requests
 import json
 import time
-import socket
 import random
-from shared_lib.lib import request_wrapper, get_ranges_raw
+from shared_lib.lib import request_wrapper
 
 print("[+] Name to IP range downloader")
 
 RAW_ASN_LIST="https://ftp.ripe.net/ripe/asnames/asn.txt"
 ASN_SEARCH=json.load(open("sources/raw/asn-list.json"))
-WHOIS_IPS=["rr.level3.net", "rr.ntt.net", "whois.radb.net", "irr.bgp.net.br"]
+ASN_IPV4_LIST=json.load(open("sources/raw/asn_ipv4.json"))
+ASN_IPV6_LIST=json.load(open("sources/raw/asn_ipv6.json"))
 
 def get_ranges(asn):
-
-    data=get_ranges_raw(asn, WHOIS_IPS)
 
     IPv4=[]
     IPv6=[]
 
-    if not data:
-        print("[!] Unable to get ip ranges for AS%s from any routing registries!"%(asn))
-        return IPv4,IPv6
+    asn = "AS" + asn
 
-    for i in data.split('\n'):
-        if not i:
-            continue
+    if asn in ASN_IPV4_LIST:
+        IPv4=ASN_IPV4_LIST[asn]
+    else:
+        print(f"[!] No IPv4 ranges were found for {asn}")
 
-        if i.startswith("route:"):
-            IPv4.append(i[6:].strip())
+    if asn in ASN_IPV6_LIST:
+        IPv6=ASN_IPV6_LIST[asn]
+    else:
+        print(f"[!] No IPv6 ranges were found for {asn}")
 
-        if i.startswith("route6:"):
-            IPv6.append(i[7:].strip())
-
-    if not len(IPv4) and not len(IPv6):
-        print("[!] No IP ranges found for AS%s"%(asn))
-
-    return IPv4,IPv6
+    return IPv4, IPv6
 
 asn_lists_raw=request_wrapper(RAW_ASN_LIST)
 print("[+] Got raw ASNs list")
