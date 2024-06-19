@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 
 import json
-import time
 import random
 from shared_lib.lib import request_wrapper
 
@@ -21,13 +20,12 @@ def get_ranges(asn):
 
     if asn in ASN_IPV4_LIST:
         IPv4=ASN_IPV4_LIST[asn]
-    else:
-        print(f"[!] No IPv4 ranges were found for {asn}")
 
     if asn in ASN_IPV6_LIST:
         IPv6=ASN_IPV6_LIST[asn]
-    else:
-        print(f"[!] No IPv6 ranges were found for {asn}")
+
+    if not IPv4 and not IPv6:
+        print("[!] No IP ranges found for %s"%(asn))
 
     return IPv4, IPv6
 
@@ -103,7 +101,6 @@ for i in target_asn:
         IPv4,IPv6=get_ranges(j)
         result_ipv4+=IPv4
         result_ipv6+=IPv6
-        time.sleep(0.5)
 
     result_ipv4=sorted(list(dict.fromkeys(result_ipv4)))
     result_ipv6=sorted(list(dict.fromkeys(result_ipv6)))
