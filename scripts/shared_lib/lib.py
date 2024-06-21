@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import time
 import requests
 
 def request_wrapper(url, headers={}, json=False):
@@ -17,6 +18,7 @@ def request_wrapper(url, headers={}, json=False):
                 exit(2)
     
             print("[!] Getting %s failed(%i/3)"%(url,i))
+            time.sleep(0.5)
         except Exception as e:
             print(f"[!] Got exception {e}")
     
