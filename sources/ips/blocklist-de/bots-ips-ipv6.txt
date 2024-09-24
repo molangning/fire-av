@@ -71,7 +71,6 @@
 2a03:2880:ff:74::face:b00c/128
 2a03:2880:ff:8::face:b00c/128
 2a03:2880:ff::face:b00c/128
-2a03:2880:ff:a::face:b00c/128
 2a03:2880:ff:c::face:b00c/128
 2a03:2880:ff:e::face:b00c/128
 2a03:2880:ff:f::face:b00c/128
