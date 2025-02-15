@@ -36,6 +36,7 @@
 2a0a:4cc0:0:13c1:28e1:a1ff:fed6:e0f0/128
 2a0a:4cc0:0:13db:8423:e9ff:feac:155a/128
 2a0a:4cc0:3:ca:441a:10ff:fe26:8e45/128
+2a0a:4cc0:80:10e9:5845:9fff:fe70:6637/128
 2a0a:4cc0:80:246:6467:33ff:fe0d:9d1e/128
 2a0a:4cc0:80:321a:74bf:84ff:fe15:7beb/128
 2a0a:4cc0:80:321d:b89c:27ff:febf:ebc2/128
