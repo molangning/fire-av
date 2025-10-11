@@ -45,7 +45,6 @@
 2a09:bac1:76e0:dd10::1c:2d7/128
 2a09:bac1:76e0:dd10::2e9:7c/128
 2a09:bac5:cb20:154b::21f:ec/128
-2a09:bac5:cb21:1caa::2db:af/128
 2a09:bac5:cb21:1d37::2e9:f/128
 2a09:bac5:cb22:1caa::2db:be/128
 2a09:bac5:cb22:1d37::2e9:8e/128
