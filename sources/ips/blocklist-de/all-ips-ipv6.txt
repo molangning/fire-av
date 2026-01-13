@@ -52,6 +52,7 @@
 2a06:dd00:1:4::1271/128
 2a09:bac5:cad1:1caa::2db:11/128
 2a09:bac5:cad4:1caa::2db:b5/128
+2a0a:4cc0:2000:c58e:d86c:65ff:fef8:99c8/128
 2a0a:f640:1501:adcc:7f52:f63a:c27e:4edb/128
 2a0a:f640:1803:2c8d:b464:e9e6:cf92:e2e6/128
 2a0b:7140:8:1:5054:ff:fe0f:aade/128
